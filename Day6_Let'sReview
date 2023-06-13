@@ -1,0 +1,24 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int i=0; i<t; i++){
+            String st = sc.next();
+            String even = "";
+            String odd = "";
+            for(int j=0; j<st.length(); j++){
+                if(j%2==0)
+                    even = even+st.charAt(j);
+                else
+                    odd = odd+st.charAt(j);
+            }
+            System.out.println(even+" "+odd);
+        }
+        sc.close();
+    }
+}
