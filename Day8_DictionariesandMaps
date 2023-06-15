@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Map<String,String> phoneBook = new HashMap<String,String>();
+        Scanner sc = new Scanner(System.in);
+        // System.out.print("How many times: "); 
+        int n = sc.nextInt();
+        sc.nextLine();
+        for (int i=1;i<=n;i++){
+            // System.out.print("Time "+i+": "); 
+            String tmp = sc.nextLine();
+            String[] words = tmp.split("\\s");
+            phoneBook.put(words[0],words[1]);
+        }
+        while(sc.hasNext()){
+            String s = sc.next();
+                if(phoneBook.containsKey(s)){
+                    System.out.println(s+"="+phoneBook.get(s));
+                }
+                else{
+                    System.out.println("Not found");
+                }                
+        }
+        sc.close();
+    }
+}
