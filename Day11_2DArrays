@@ -1,0 +1,69 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        List<List<Integer>> arr = new ArrayList<>();
+
+        IntStream.range(0, 6).forEach(i -> {
+            try {
+                arr.add(
+                    Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+                        .map(Integer::parseInt)
+                        .collect(toList())
+                );
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        bufferedReader.close();
+        
+        // code starts from here
+        
+         List<Integer> sumList = new ArrayList<>(); 
+        
+        // Iterate over lines.
+        // Since maximum number of lines is 6, it only runs up to the 4th line where it can still form hourglasses.
+        for (int l = 0; l < 4; l++) {
+            // Get values for the lines of the hourglass
+            List<Integer> topLine = arr.get(l);
+            List<Integer> middleLine = arr.get(l+1);
+            List<Integer> bottomLine = arr.get(l+2);
+            
+            // Iterate over columns.
+            for (int i = 0; i < 4; i++) {
+                // Sum each part of the hourglass
+                int top = topLine.get(i)+topLine.get(i+1)+topLine.get(i+2);
+                int middle = middleLine.get(i+1);
+                int bottom = bottomLine.get(i)+bottomLine.get(i+1)+bottomLine.get(i+2);
+                int sum = top+middle+bottom;
+                
+                // Add the result to a list
+                sumList.add(sum);
+            }
+        }
+        
+        // Sorts list of results in reverse order and return first value (as it's the highest after sorting)
+        Collections.sort(sumList, Comparator.reverseOrder());
+        
+        // Collections.sort(sumList); 
+        // System.out.println(sumList.get.lastIndexOf);
+        System.out.println(sumList.get(0));
+        
+    
+    }
+}
