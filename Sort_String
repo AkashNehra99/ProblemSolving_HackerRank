@@ -1,0 +1,30 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        int[] arr = new int[26];
+        
+        // fill the counting sort array
+        for(int i=0; i<str.length(); i++)
+        {
+            char ch = str.charAt(i);
+            int val = (int)(ch-'a');
+            arr[val]++;
+        }
+        
+        // Traverse the 26 size array aur jo bhi number jitni bar bhi aata ho uska corresponding character print kardena h
+        for(int i=0; i<arr.length; i++)
+        {
+            char ch = (char)('a'+i); // corresponding character
+            while(arr[i]>0)          // kitni baar print karna h
+            {
+                arr[i]--;
+                System.out.print(ch);
+            }
+        }
+    }
+}
