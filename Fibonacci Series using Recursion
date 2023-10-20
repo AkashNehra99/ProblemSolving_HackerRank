@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    static void fib_rec(int a, int b, int n)
+    {
+        if(n==0)
+            return;
+        System.out.print(a+b+" ");
+        fib_rec(b,a+b,n-1);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if(n==1)
+            System.out.print("1");
+        else if(n>=2)
+        {
+            System.out.print(1+" "+1+" ");
+            fib_rec(1,1,n-2);
+        }
+    }
+}
